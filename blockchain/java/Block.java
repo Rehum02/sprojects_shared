@@ -1,9 +1,9 @@
 /** --------------------------------------------------------
- * @filename 	 			: Block.java
+ * @filename 	 		: Block.java
  * @description  		: Handle Block
  * @author_dev 			: MichéKOKORA [MK]
- * @date 				    : 22.02.2023
- * @project 	 			: S Architecture for Big data  Project 2 -1  | Simple Blockchain | TDD
+ * @date 				: 02.2023
+ * @project 	 		: S Architecture for Big data  Project 2 -1  | Simple Blockchain | TDD
  *
  *  (c) Copyright 2023
  *-------------------------------------------------------- */
