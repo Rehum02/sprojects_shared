@@ -1,0 +1,45 @@
+/** --------------------------------------------------------
+ * @filename 	 			: rainforest_test.js
+ * @description  		: Test when applying for Senior Engineer :: https://jobs.lever.co/rainforest/fc829b24-1c98-4ccf-af03-e54a003d72ae/apply
+ * @author_dev 			: MichéKOKORA [MK] 
+ * @date 				    : 25.10.2022
+ * @project 	 			: Rainforest Test :: https://www.letsrevolutionizetesting.com/challenge
+ * 
+ *  (c) Copyright 2022
+ *-------------------------------------------------------- */
+
+var link_current= "https://www.letsrevolutionizetesting.com/challenge.json";
+var link_list = [];
+var counter = 0;
+  
+/**
+ * Resolve Challenge
+ * @param {*} p__link  Current Link 
+ */
+function f_resolve_challenge(p__link){
+  fetch(p__link)
+	  .then((p__res)=>p__res.json())
+	  .then((p__res)=>{
+			  ++counter;
+			  console.log(' Processing  ',  counter, p__res);
+
+			  if(!p__res['follow'])  // 1 - Stopping if no more link to follow
+			  {
+				  console.log('STOPPING :: N:', link_list.length, ' :: C:', counter, '  :: LAST:', p__res );
+				  return;
+			  }
+			  
+			  link_current =  p__res['follow'].replace(/challenge/, 'challenge.json');
+			  p__res['follow_new'] = link_current;
+			  link_list.push(p__res);
+
+			  f_resolve_challenge(link_current);
+		  })
+}
+
+f_resolve_challenge(link_current);
+
+/**  F I N A L   R E S P O N S E  */
+// {
+//     "message": "Congratulations! You've reached the end! You have passed our simple test and we would love to hear from you. Please save the code you used to a private GitHub gist and fill out the application form at https://jobs.lever.co/rainforest with the link to the gist. We'll be in touch shortly!"
+// }
